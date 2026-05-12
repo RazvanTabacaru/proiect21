@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="utf-8" />
+  <script>
+    (function () {
+      var tema = localStorage.getItem('tema') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-tema', tema);
+    })();
+  </script>
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1a73e8" />
+  <meta name="description" content="Platformă de management cereri pentru administrația publică" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Platformă ERP & Ticketing</title>
+</head>
+
+<body>
+  <noscript>Trebuie să activezi JavaScript pentru a rula această aplicație.</noscript>
+  <div id="root"></div>
+</body>
+
+</html>

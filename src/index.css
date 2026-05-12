@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--culoare-bg);
+  color: var(--culoare-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+:root,
+[data-tema="light"] {
+  --culoare-bg: #f7f8fa;
+  --culoare-bg-card: #ffffff;
+  --culoare-bg-input: #ffffff;
+  --culoare-text: #1a202c;
+  --culoare-text-secundar: #555555;
+  --culoare-border: #e2e8f0;
+  --culoare-border-input: #cbd5e0;
+  --culoare-primary: #1a73e8;
+  --culoare-danger: #e53e3e;
+  --culoare-success: #38a169;
+  --culoare-warning: #d69e2e;
+  --culoare-header-bg: #ffffff;
+  --culoare-table-header: #f0f4ff;
+  --culoare-table-border: #eee;
+  --culoare-hover: #f0f4ff;
+  --culoare-notificare-bg: #c6f6d5;
+  --culoare-notificare-border: #38a169;
+  --culoare-notificare-text: #276749;
+}
+
+
+[data-tema="dark"] {
+  --culoare-bg: #0f1117;
+  --culoare-bg-card: #1a1d2e;
+  --culoare-bg-input: #2d3250;
+  --culoare-text: #e2e8f0;
+  --culoare-text-secundar: #a0aec0;
+  --culoare-border: #2d3748;
+  --culoare-border-input: #4a5568;
+  --culoare-primary: #4299e1;
+  --culoare-danger: #fc8181;
+  --culoare-success: #68d391;
+  --culoare-warning: #f6e05e;
+  --culoare-header-bg: #1a1d2e;
+  --culoare-table-header: #1e2235;
+  --culoare-table-border: #2d3748;
+  --culoare-hover: #1e2235;
+  --culoare-notificare-bg: #1c4532;
+  --culoare-notificare-border: #38a169;
+  --culoare-notificare-text: #9ae6b4;
+}
+
+
+input,
+textarea,
+select {
+  background-color: var(--culoare-bg-input) !important;
+  color: var(--culoare-text) !important;
+  border: 1px solid var(--culoare-border-input) !important;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--culoare-text-secundar);
+  opacity: 0.8;
+}
+
+/* Fix autocomplete Chrome - suprascrie galbenul */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--culoare-bg-input) inset !important;
+  -webkit-text-fill-color: var(--culoare-text) !important;
+  caret-color: var(--culoare-text);
+}
+
+
+table {
+  background-color: var(--culoare-bg-card);
+}
+
+tr:hover {
+  background-color: var(--culoare-hover);
+}
