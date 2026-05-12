@@ -15,6 +15,7 @@ export default function DashboardAdmin() {
   const [loading, setLoading] = useState(true)
   const [notificare, setNotificare] = useState('')
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchDate()
 
@@ -83,7 +84,7 @@ export default function DashboardAdmin() {
   return (
     <div style={{ padding: 32, maxWidth: 1100, margin: '0 auto', background: 'var(--culoare-bg)', minHeight: '100vh' }}>
 
-      {}
+      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
         <h1 style={{ margin: 0, color: 'var(--culoare-text)' }}>Dashboard Administrator</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -93,14 +94,14 @@ export default function DashboardAdmin() {
         </div>
       </div>
 
-      {}
+      {/* Notificare realtime */}
       {notificare && (
         <div style={{ background: 'var(--culoare-notificare-bg)', border: `1px solid var(--culoare-notificare-border)`, borderRadius: 8, padding: '10px 16px', marginBottom: 16, color: 'var(--culoare-notificare-text)', fontWeight: 500 }}>
           🔴 Live: {notificare}
         </div>
       )}
 
-      {}
+      {/* Statistici */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 }}>
         {[
           { label: 'Total cereri', val: cereri.length, color: 'var(--culoare-primary)' },
@@ -115,7 +116,7 @@ export default function DashboardAdmin() {
         ))}
       </div>
 
-      {}
+      {/* Butoane export */}
       <div style={{ display: 'flex', gap: 10, marginBottom: 16, justifyContent: 'flex-end' }}>
         <button onClick={() => exportCereriPDF(cereri, profil?.nume)} style={{ ...btnStyle('var(--culoare-danger)'), padding: '8px 18px', fontSize: 14 }}>
           📄 Export PDF
@@ -125,7 +126,7 @@ export default function DashboardAdmin() {
         </button>
       </div>
 
-      {}
+      {/* Tabs */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 24, borderBottom: `2px solid var(--culoare-border)` }}>
         {['cereri', 'utilizatori', 'loguri'].map(t => (
           <button key={t} onClick={() => setTab(t)} style={{
@@ -141,7 +142,7 @@ export default function DashboardAdmin() {
         ))}
       </div>
 
-      {}
+      {/* Tab: Cereri */}
       {tab === 'cereri' && (
         <table style={tableStyle}>
           <thead>
@@ -167,7 +168,7 @@ export default function DashboardAdmin() {
         </table>
       )}
 
-      {}
+      {/* Tab: Utilizatori */}
       {tab === 'utilizatori' && (
         <table style={tableStyle}>
           <thead>
@@ -193,7 +194,7 @@ export default function DashboardAdmin() {
         </table>
       )}
 
-      {}
+      {/* Tab: Activity Log */}
       {tab === 'loguri' && (
         <table style={tableStyle}>
           <thead>
@@ -215,7 +216,7 @@ export default function DashboardAdmin() {
         </table>
       )}
 
-      {}
+      {/* Asistent AI */}
       <AsistentAI cereri={cereri} />
     </div>
   )

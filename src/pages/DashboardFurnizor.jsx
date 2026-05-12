@@ -11,6 +11,7 @@ export default function DashboardFurnizor() {
   const [loading, setLoading] = useState(true)
   const [tab, setTab] = useState('cereri')
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchCereri()
 
@@ -53,7 +54,7 @@ export default function DashboardFurnizor() {
   return (
     <div style={{ padding: 32, maxWidth: 900, margin: '0 auto', background: 'var(--culoare-bg)', minHeight: '100vh' }}>
 
-      {}
+      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 32 }}>
         <h1 style={{ margin: 0, color: 'var(--culoare-text)' }}>Dashboard Furnizor</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -63,7 +64,7 @@ export default function DashboardFurnizor() {
         </div>
       </div>
 
-      {}
+      {/* Tabs */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 24, borderBottom: `2px solid var(--culoare-border)` }}>
         {['cereri', 'suport'].map(t => (
           <button key={t} onClick={() => setTab(t)} style={{
@@ -79,10 +80,10 @@ export default function DashboardFurnizor() {
         ))}
       </div>
 
-      {}
+      {/* Tab: Cereri */}
       {tab === 'cereri' && (
         <>
-          {}
+          {/* Statistici */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
             {[
               { label: 'Total cereri', val: cereri.length, color: 'var(--culoare-primary)' },
@@ -96,7 +97,7 @@ export default function DashboardFurnizor() {
             ))}
           </div>
 
-          {}
+          {/* Cereri în așteptare */}
           <h2 style={{ color: 'var(--culoare-text)' }}>În așteptare ({inAsteptare.length})</h2>
           {inAsteptare.length === 0
             ? <p style={{ color: 'var(--culoare-text-secundar)' }}>Nicio cerere în așteptare.</p>
@@ -119,7 +120,7 @@ export default function DashboardFurnizor() {
             ))
           }
 
-          {}
+          {/* Cereri procesate */}
           <h2 style={{ marginTop: 32, color: 'var(--culoare-text)' }}>Procesate ({procesate.length})</h2>
           <table style={tableStyle}>
             <thead>
@@ -147,10 +148,10 @@ export default function DashboardFurnizor() {
         </>
       )}
 
-      {}
+      {/* Tab: Suport */}
       {tab === 'suport' && <SupportForm />}
 
-      {}
+      {/* Asistent AI */}
       <AsistentAI cereri={cereri} />
     </div>
   )
@@ -158,11 +159,7 @@ export default function DashboardFurnizor() {
 
 function StatusBadge({ status }) {
   const culori = { asteptare: '#d69e2e', acceptat: '#38a169', respins: '#e53e3e' }
-  return (
-    <span style={{ background: culori[status] + '22', color: culori[status], padding: '2px 10px', borderRadius: 12, fontWeight: 600, fontSize: 13 }}>
-      {status}
-    </span>
-  )
+  return <span style={{ background: culori[status] + '22', color: culori[status], padding: '2px 10px', borderRadius: 12, fontWeight: 600, fontSize: 13 }}>{status}</span>
 }
 
 const tableStyle = { width: '100%', borderCollapse: 'collapse', fontSize: 14, background: 'var(--culoare-bg-card)', borderRadius: 10 }
