@@ -11,7 +11,7 @@ export default function DashboardPrimarie() {
   const { profil, logout } = useAuth()
   const [cereri, setCereri] = useState([])
   const [furnizori, setFurnizori] = useState([])
-  const [form, setForm] = useState({ titlu: '', descriere: '', furnizor_id: '' })
+  const [form, setForm] = useState({ titlu: '', descriere: '', descriere_suplimentara: '', furnizor_id: '' })
   const [loading, setLoading] = useState(true)
   const [trimitere, setTrimitere] = useState(false)
   const [tab, setTab] = useState('cereri')
@@ -37,6 +37,7 @@ export default function DashboardPrimarie() {
     const { error } = await supabase.from('cereri').insert({
       titlu: form.titlu,
       descriere: form.descriere,
+      descriere_suplimentara: form.descriere_suplimentara,
       furnizor_id: form.furnizor_id || null,
       primarie_id: profil.id,
       status: 'asteptare'
@@ -47,7 +48,7 @@ export default function DashboardPrimarie() {
         actiune: 'adaugare',
         detalii: `Cerere nouă: ${form.titlu}`
       })
-      setForm({ titlu: '', descriere: '', furnizor_id: '' })
+      setForm({ titlu: '', descriere: '', descriere_suplimentara: '', furnizor_id: '' })
       fetchDate()
     }
     setTrimitere(false)
@@ -97,6 +98,10 @@ export default function DashboardPrimarie() {
               <div style={{ marginBottom: 14 }}>
                 <label style={labelStyle}>Descriere</label>
                 <textarea value={form.descriere} onChange={e => setForm({ ...form, descriere: e.target.value })} style={{ ...inputStyle, height: 80, resize: 'vertical' }} />
+              </div>
+              <div style={{ marginBottom: 14 }}>
+                <label style={labelStyle}>Descriere suplimentară</label>
+                <textarea value={form.descriere_suplimentara} onChange={e => setForm({ ...form, descriere_suplimentara: e.target.value })} style={{ ...inputStyle, height: 80, resize: 'vertical' }} placeholder="Detalii suplimentare..." />
               </div>
               <div style={{ marginBottom: 14 }}>
                 <label style={labelStyle}>Alocă furnizor (opțional)</label>
